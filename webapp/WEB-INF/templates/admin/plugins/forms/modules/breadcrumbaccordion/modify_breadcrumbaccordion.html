@@ -1,17 +1,18 @@
 <#if list_breadcrumbAccordion_config_item?? && list_breadcrumbAccordion_config_item?size gt 0>
-<@tform name='modify_breadcrumb' action='jsp/admin/plugins/forms/modules/breadcrumbaccordion/ManageBreadcrumbAccordion.jsp'  params='target="_top"'>
+<@tform name='modify_breadcrumb' action='jsp/admin/plugins/forms/modules/breadcrumbaccordion/ManageBreadcrumbAccordion.jsp'  params={"target": "_top"}>
   <@div class='sortable'>
   <#list list_breadcrumbAccordion_config_item as configItemDisplay>
-  <#assign boxChecked><#if configItemDisplay.configItem.checked>checked</#if></#assign>
+  <#assign boxChecked = configItemDisplay.configItem.checked?then( 'checked', '' )>
+  <#assign boxTitle>#i18n{module.forms.breadcrumbaccordion.modify_breadcrumbAccordion.step.title} : <strong>${configItemDisplay.step.title!}</strong></#assign>
     <@box class=boxChecked>
-      <@boxHeader title='#i18n{module.forms.breadcrumbaccordion.modify_breadcrumbAccordion.step.title} : <strong>${configItemDisplay.step.title!}</strong>' boxTools=true>
+      <@boxHeader title=boxTitle boxTools=true>
         <@checkBox orientation='switch' class='check-toggle' labelKey='#i18n{module.forms.breadcrumbaccordion.modify_breadcrumbAccordion.step.toComplete} ' name='step_to_complete' id='step_to_complete_${configItemDisplay.step.id}' value=configItemDisplay.step.id?string checked=configItemDisplay.configItem.checked mandatory=false /> 
       </@boxHeader>
       <@boxBody class='form-bread-position' id='step_position_${configItemDisplay.step.id}' >
         <@input type='hidden' name='id_form' value='${configItemDisplay.step.idForm!}' />
         <@input type='hidden' name='id_step' value='${configItemDisplay.step.id!}' />
         <@formGroup labelKey='#i18n{module.forms.breadcrumbaccordion.modify_breadcrumbAccordion.step.position}'>
-          <@input type='number' class='step-pos' name='step_position' value='${configItemDisplay.configItem.position!0}' params=' style="width: 60px"' min=0 max=99/>
+          <@input type='number' class='step-pos w-auto' name='step_position' value='${configItemDisplay.configItem.position!0}' min=0 max=99/>
         </@formGroup>
       </@boxBody>
     </@box>

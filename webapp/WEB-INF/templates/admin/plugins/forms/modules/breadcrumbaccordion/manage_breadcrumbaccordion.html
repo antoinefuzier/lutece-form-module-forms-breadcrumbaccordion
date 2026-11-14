@@ -4,7 +4,7 @@
          <@tform type='inline'>
 				<@formGroup labelFor='plugin_type' labelKey='#i18n{portal.system.manage_plugins.buttonFilter}' hideLabel=['all'] formStyle='inline'>
 					<@inputGroup>
-						<@input type='text' name='search_forms' id='search_forms' placeHolder='#i18n{portal.system.manage_plugins.buttonFilter}' params='autocomplete="off" addons' />
+						<@input type='text' name='search_forms' id='search_forms' placeHolder='#i18n{portal.system.manage_plugins.buttonFilter}' autoComplete="off" />
 						<@button color='primary' title='#i18n{portal.system.manage_plugins.buttonFilter}' buttonIcon='filter' hideTitle=['all'] />
 					</@inputGroup>
 				</@formGroup>
@@ -15,9 +15,9 @@
 		<@manageFeatureItem>
 			<@manageFeatureItemColumn auto=true>
 				<#if breadcrumbAccordion.items?has_content>
-					<@tag color='success' class='mx-1' params='title="#i18n{module.forms.breadcrumbaccordion.manage_breadcrumbAccordion.state} #i18n{portal.util.labelYes}"'><@icon style='check' /></@tag>
+					<@tag color='success' class='mx-1' title="#i18n{module.forms.breadcrumbaccordion.manage_breadcrumbAccordion.state} #i18n{portal.util.labelYes}"><@icon style='check' /></@tag>
 				<#else>
-					<@tag color='danger' class='mx-1' params='title="#i18n{module.forms.breadcrumbaccordion.manage_breadcrumbAccordion.state} #i18n{portal.util.labelNo}"'><@icon style='x' /></@tag>
+					<@tag color='danger' class='mx-1' title="#i18n{module.forms.breadcrumbaccordion.manage_breadcrumbAccordion.state} #i18n{portal.util.labelNo}"><@icon style='x' /></@tag>
 				</#if>
 			</@manageFeatureItemColumn>
 			<@manageFeatureItemColumn class='searchable'>${breadcrumbAccordion.formTitle}</@manageFeatureItemColumn>

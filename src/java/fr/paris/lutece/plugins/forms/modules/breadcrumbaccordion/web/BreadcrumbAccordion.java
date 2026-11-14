@@ -42,6 +42,8 @@ import java.util.Map;
 
 import org.eclipse.microprofile.config.inject.ConfigProperty;
 
+import freemarker.core.TemplateHTMLOutputModel;
+
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Inject;
 import jakarta.inject.Named;
@@ -59,6 +61,7 @@ import fr.paris.lutece.plugins.forms.web.breadcrumb.IBreadcrumb;
 import fr.paris.lutece.plugins.forms.web.entrytype.DisplayType;
 import fr.paris.lutece.portal.service.i18n.I18nService;
 import fr.paris.lutece.portal.service.template.AppTemplateService;
+import fr.paris.lutece.portal.service.template.HtmlMarkup;
 import fr.paris.lutece.util.html.HtmlTemplate;
 
 /**
@@ -349,13 +352,13 @@ public class BreadcrumbAccordion implements IBreadcrumb
         }
 
         /**
-         * Gives the HTML of the questions
+         * Gives the HTML of the questions, rendered by the forms templates, as markup the template writes as is
          * 
          * @return the HTML of the questions
          */
-        public List<String> getQuestionHtml( )
+        public List<TemplateHTMLOutputModel> getQuestionHtml( )
         {
-            return _listQuestionHtml;
+            return HtmlMarkup.ofAll( _listQuestionHtml );
         }
     }
 
