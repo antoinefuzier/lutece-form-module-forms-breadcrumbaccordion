@@ -78,7 +78,9 @@ public class BreadcrumbAccordionRenderTest
             + "<#macro box class='' rest...><div class=\"card ${class}\"><#nested></div></#macro>"
             + "<#macro boxHeader title='' rest...><h2 class=\"card-title\">${title}</h2><#nested></#macro>"
             + "<#macro boxBody rest...><#nested></#macro><#macro formGroup rest...><#nested></#macro>"
-            + "<#macro checkBox rest...></#macro><#macro input rest...></#macro><#macro button rest...></#macro><#macro empty rest...></#macro>";
+            + "<#macro checkBox rest...></#macro><#macro input rest...></#macro><#macro button rest...></#macro><#macro empty rest...></#macro>"
+            + "<#macro pageContainer rest...><main><#nested></main></#macro><#macro pageColumn rest...><div><#nested></div></#macro>"
+            + "<#macro pageHeader title='' rest...><h1 class=\"page-title\">${title}</h1><#nested></#macro>";
 
     private static final String TITLE = "Adresse <b>\"l'accueil\"</b>";
     private static final String TITLE_ESCAPED = "Adresse &lt;b&gt;&quot;l&#39;accueil&quot;&lt;/b&gt;";
@@ -188,7 +190,8 @@ public class BreadcrumbAccordionRenderTest
 
     /**
      * The title of a step box of the back office keeps its strong element and writes the title of the step as text;
-     * the box of a step to complete has the class checked, which the script of the page reads.
+     * the box of a step to complete has the class checked, which the script of the page reads; the page has an h1 above
+     * the step boxes.
      *
      * @throws Exception
      *             if the rendering fails
@@ -206,5 +209,24 @@ public class BreadcrumbAccordionRenderTest
         assertTrue( strHtml.contains( "<strong>" + TITLE_ESCAPED + "</strong>" ), strHtml );
         assertFalse( strHtml.contains( "&lt;strong&gt;" ), strHtml );
         assertTrue( strHtml.contains( "<div class=\"card checked\">" ), strHtml );
+        assertTrue( strHtml.contains( "<h1 class=\"page-title\">" ), strHtml );
+        assertTrue( strHtml.indexOf( "<h1" ) < strHtml.indexOf( "<h2 class=\"card-title\">" ), strHtml );
+    }
+
+    /**
+     * The page without a step to configure has an h1 too.
+     *
+     * @throws Exception
+     *             if the rendering fails
+     */
+    @Test
+    public void testEmptyPageHasAPageHeading( ) throws Exception
+    {
+        Map<String, Object> model = new HashMap<>( );
+        model.put( "list_breadcrumbAccordion_config_item", List.of( ) );
+
+        String strHtml = render( TEMPLATE_MODIFY, model );
+
+        assertTrue( strHtml.contains( "<h1 class=\"page-title\">" ), strHtml );
     }
 }
