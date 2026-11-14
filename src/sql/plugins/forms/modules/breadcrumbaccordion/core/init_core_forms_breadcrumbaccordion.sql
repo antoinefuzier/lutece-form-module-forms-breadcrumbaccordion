@@ -4,3 +4,8 @@
 DELETE FROM core_admin_right WHERE id_right = 'BREADCRUMBACCORDION_MANAGEMENT';
 INSERT INTO core_admin_right (id_right,name,level_right,admin_url,description,is_updatable,plugin_name,id_feature_group,icon_url,documentation_url, id_order ) VALUES 
 ('BREADCRUMBACCORDION_MANAGEMENT','module.forms.breadcrumbaccordion.adminFeature.manageBreadcrumbAccordion.name',1,'jsp/admin/plugins/forms/modules/breadcrumbaccordion/ManageBreadcrumbAccordion.jsp','module.forms.breadcrumbaccordion.adminFeature.manageBreadcrumbAccordion.description',0,'forms-breadcrumbaccordion',NULL,'ti ti-line-dashed',NULL,4);
+--
+-- Data for table core_user_right
+--
+DELETE FROM core_user_right WHERE id_right = 'BREADCRUMBACCORDION_MANAGEMENT';
+INSERT INTO core_user_right (id_right,id_user) VALUES ('BREADCRUMBACCORDION_MANAGEMENT',1);
