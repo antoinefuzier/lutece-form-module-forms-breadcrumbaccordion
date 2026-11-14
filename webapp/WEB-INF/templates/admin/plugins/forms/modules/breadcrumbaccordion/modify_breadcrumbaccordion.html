@@ -9,10 +9,10 @@
         <@checkBox orientation='switch' class='check-toggle' labelKey='#i18n{module.forms.breadcrumbaccordion.modify_breadcrumbAccordion.step.toComplete} ' name='step_to_complete' id='step_to_complete_${configItemDisplay.step.id}' value=configItemDisplay.step.id?string checked=configItemDisplay.configItem.checked mandatory=false /> 
       </@boxHeader>
       <@boxBody class='form-bread-position' id='step_position_${configItemDisplay.step.id}' >
-        <@input type='hidden' name='id_form' value='${configItemDisplay.step.idForm!}' />
-        <@input type='hidden' name='id_step' value='${configItemDisplay.step.id!}' />
-        <@formGroup labelKey='#i18n{module.forms.breadcrumbaccordion.modify_breadcrumbAccordion.step.position}'>
-          <@input type='number' class='step-pos w-auto' name='step_position' value='${configItemDisplay.configItem.position!0}' min=0 max=99/>
+        <@input type='hidden' name='id_form' id='id_form_${configItemDisplay.step.id}' value='${configItemDisplay.step.idForm!}' />
+        <@input type='hidden' name='id_step' id='id_step_${configItemDisplay.step.id}' value='${configItemDisplay.step.id!}' />
+        <@formGroup labelKey='#i18n{module.forms.breadcrumbaccordion.modify_breadcrumbAccordion.step.position}' labelFor='step_position_value_${configItemDisplay.step.id}'>
+          <@input type='number' class='step-pos w-auto' name='step_position' id='step_position_value_${configItemDisplay.step.id}' value='${configItemDisplay.configItem.position!0}' min=0 max=99/>
         </@formGroup>
       </@boxBody>
     </@box>

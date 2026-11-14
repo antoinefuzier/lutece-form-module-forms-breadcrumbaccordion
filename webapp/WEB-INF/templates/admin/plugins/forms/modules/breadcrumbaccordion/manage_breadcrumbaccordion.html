@@ -2,7 +2,7 @@
     <@pageColumn>
 		<@pageHeader title='#i18n{module.forms.breadcrumbaccordion.manage_breadcrumbAccordion.title}' boxTools=true>
          <@tform type='inline'>
-				<@formGroup labelFor='plugin_type' labelKey='#i18n{portal.system.manage_plugins.buttonFilter}' hideLabel=['all'] formStyle='inline'>
+				<@formGroup labelFor='search_forms' labelKey='#i18n{portal.system.manage_plugins.buttonFilter}' hideLabel=['all'] formStyle='inline'>
 					<@inputGroup>
 						<@input type='text' name='search_forms' id='search_forms' placeHolder='#i18n{portal.system.manage_plugins.buttonFilter}' autoComplete="off" />
 						<@button color='primary' title='#i18n{portal.system.manage_plugins.buttonFilter}' buttonIcon='filter' hideTitle=['all'] />
@@ -15,14 +15,14 @@
 		<@manageFeatureItem>
 			<@manageFeatureItemColumn auto=true>
 				<#if breadcrumbAccordion.items?has_content>
-					<@tag color='success' class='mx-1' title="#i18n{module.forms.breadcrumbaccordion.manage_breadcrumbAccordion.state} #i18n{portal.util.labelYes}"><@icon style='check' /></@tag>
+					<@tag color='success' class='mx-1' title="#i18n{module.forms.breadcrumbaccordion.manage_breadcrumbAccordion.state} #i18n{portal.util.labelYes}"><@icon style='check' title='#i18n{module.forms.breadcrumbaccordion.manage_breadcrumbAccordion.state} #i18n{portal.util.labelYes}' /></@tag>
 				<#else>
-					<@tag color='danger' class='mx-1' title="#i18n{module.forms.breadcrumbaccordion.manage_breadcrumbAccordion.state} #i18n{portal.util.labelNo}"><@icon style='x' /></@tag>
+					<@tag color='danger' class='mx-1' title="#i18n{module.forms.breadcrumbaccordion.manage_breadcrumbAccordion.state} #i18n{portal.util.labelNo}"><@icon style='x' title='#i18n{module.forms.breadcrumbaccordion.manage_breadcrumbAccordion.state} #i18n{portal.util.labelNo}' /></@tag>
 				</#if>
 			</@manageFeatureItemColumn>
 			<@manageFeatureItemColumn class='searchable'>${breadcrumbAccordion.formTitle}</@manageFeatureItemColumn>
 			<@manageFeatureItemColumn class='form-actions' align='end' >
-				<@offcanvas targetUrl="jsp/admin/plugins/forms/modules/breadcrumbaccordion/ManageBreadcrumbAccordion.jsp?view=modifyBreadcrumb&id_form=${breadcrumbAccordion.idForm}" useIframe=true targetElement="#modifyBreadcrumb" id="bread_${breadcrumbAccordion.idForm}" title="#i18n{module.forms.breadcrumbaccordion.manage_breadcrumbAccordion.button.modify}" btnTitle="#i18n{module.forms.breadcrumbaccordion.manage_breadcrumbAccordion.button.modify}" btnIcon="pencil" position="end" size="half" />
+				<@offcanvas targetUrl="jsp/admin/plugins/forms/modules/breadcrumbaccordion/ManageBreadcrumbAccordion.jsp?view=modifyBreadcrumb&id_form=${breadcrumbAccordion.idForm}" useIframe=true targetElement="#modifyBreadcrumb" id="bread_${breadcrumbAccordion.idForm}" title="#i18n{module.forms.breadcrumbaccordion.manage_breadcrumbAccordion.button.modify}" btnTitle="#i18n{module.forms.breadcrumbaccordion.manage_breadcrumbAccordion.button.modify}" btnIcon="pencil" position="end" size="half" params={"aria-label": "#i18n{module.forms.breadcrumbaccordion.manage_breadcrumbAccordion.button.modify} ${breadcrumbAccordion.formTitle}"} />
 			</@manageFeatureItemColumn>
 		 </@manageFeatureItem>
 		</#list>
